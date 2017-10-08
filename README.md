@@ -1,2 +1,1 @@
-# file-metadata
-Upload file and return metadata
+# Backend Challenges boilerplate - package.json
