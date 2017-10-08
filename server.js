@@ -8,6 +8,8 @@
 var fs = require('fs');
 var express = require('express');
 var app = express();
+var multer  = require('multer')
+var upload = multer({ dest: 'uploads/'})
 
 if (!process.env.DISABLE_XORIGIN) {
   app.use(function(req, res, next) {
@@ -32,6 +34,14 @@ app.route('/_api/package.json')
       res.type('txt').send(data.toString());
     });
   });
+
+/////////////////
+app.post('/upload', upload.single('file'), function(req, res, next){
+    
+    return res.json({Size : req.file.size});
+  });
+///////////////
+
   
 app.route('/')
     .get(function(req, res) {
